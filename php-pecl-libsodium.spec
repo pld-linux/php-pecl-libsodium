@@ -17,6 +17,7 @@ Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 URL:		http://pecl.php.net/package/libsodium
 # See https://github.com/jedisct1/libsodium-php/pull/70
 Patch0:		%{modname}-pr70.patch
+Patch1:		tests-php53.patch
 BuildRequires:	%{php_name}-devel >= 4:5.3
 BuildRequires:	libsodium-devel >= 0.6.0
 BuildRequires:	pkgconfig
@@ -40,6 +41,7 @@ Documentation: https://paragonie.com/book/pecl-libsodium
 mv %{modname}-%{version}/* .
 
 %patch0 -p1
+%patch1 -p1
 
 # Sanity check, really often broken
 extver=$(sed -n '/#define PHP_LIBSODIUM_VERSION/{s/.* "//;s/".*$//;p}' php_libsodium.h)
