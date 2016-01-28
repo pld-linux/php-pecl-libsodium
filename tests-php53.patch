@@ -1,3 +1,7 @@
+
+upstream:
+https://github.com/jedisct1/libsodium-php/pull/81
+
 --- php-pecl-libsodium-1.0.2/tests/utils.phpt	2016-01-28 21:43:00.641808352 +0200
 +++ php-pecl-libsodium-1.0.2/tests/utils.phpt	2016-01-28 21:45:37.116534064 +0200
 @@ -11,15 +11,15 @@
