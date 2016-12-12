@@ -1,23 +1,20 @@
-%define	buildver   %(pkg-config --silence-errors --modversion libsodium 2>/dev/null || echo 65536)
-
 #
 # Conditional build:
 %bcond_without	tests		# build without tests
 
+%define	buildver   %(pkg-config --silence-errors --modversion libsodium 2>/dev/null || echo 65536)
+
 %define		php_name	php%{?php_suffix}
 %define		modname	libsodium
 Summary:	Wrapper for the Sodium cryptographic library
-Name:		php-pecl-%{modname}
-Version:	1.0.2
+Name:		%{php_name}-pecl-%{modname}
+Version:	1.0.6
 Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
-# Source0-md5:	b4083271f4fe0a94b8ae69320878a5e8
+# Source0-md5:	ad76fd81a44a7122dae9683ca18f3be6
 URL:		http://pecl.php.net/package/libsodium
-# See https://github.com/jedisct1/libsodium-php/pull/70
-Patch0:		%{modname}-pr70.patch
-Patch1:		tests-php53.patch
 BuildRequires:	%{php_name}-devel >= 4:5.3
 BuildRequires:	libsodium-devel >= 0.6.0
 BuildRequires:	pkgconfig
@@ -40,9 +37,7 @@ Documentation: https://paragonie.com/book/pecl-libsodium
 %setup -qc
 mv %{modname}-%{version}/* .
 
-%patch0 -p1
-%patch1 -p1
-
+%build
 # Sanity check, really often broken
 extver=$(sed -n '/#define PHP_LIBSODIUM_VERSION/{s/.* "//;s/".*$//;p}' php_libsodium.h)
 if test "x${extver}" != "x%{version}"; then
@@ -50,7 +45,6 @@ if test "x${extver}" != "x%{version}"; then
 	exit 1
 fi
 
-%build
 phpize
 %configure
 %{__make}
