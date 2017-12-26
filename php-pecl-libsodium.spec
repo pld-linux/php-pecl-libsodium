@@ -7,13 +7,14 @@
 %define		php_name	php%{?php_suffix}
 %define		modname	libsodium
 Summary:	Wrapper for the Sodium cryptographic library
+Summary(pl.UTF-8):	Interfejs do biblioteki kryptograficznej Sodium
 Name:		%{php_name}-pecl-%{modname}
-Version:	1.0.6
+Version:	1.0.7
 Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
-# Source0-md5:	ad76fd81a44a7122dae9683ca18f3be6
+# Source0-md5:	d8edb46a03268c45bfca7951d5e7c57a
 URL:		http://pecl.php.net/package/libsodium
 BuildRequires:	%{php_name}-devel >= 4:5.3
 BuildRequires:	libsodium-devel >= 0.6.0
@@ -33,9 +34,14 @@ A simple, low-level PHP extension for libsodium.
 
 Documentation: https://paragonie.com/book/pecl-libsodium
 
+%description -l pl.UTF-8
+Proste, niskopoziomowe rozszerzenie PHP do libsodium.
+
+Dokumentacja: https://paragonie.com/book/pecl-libsodium
+
 %prep
 %setup -qc
-mv %{modname}-%{version}/* .
+%{__mv} %{modname}-%{version}/* .
 
 %build
 # Sanity check, really often broken
