@@ -23,6 +23,7 @@ BuildRequires:	rpmbuild(macros) >= 1.666
 %if %{with tests}
 BuildRequires:	%{php_name}-cli
 BuildRequires:	%{php_name}-json
+BuildRequires:	%{php_name}-pcre
 %endif
 Requires:	libsodium >= %{buildver}
 %{?requires_php_extension}
