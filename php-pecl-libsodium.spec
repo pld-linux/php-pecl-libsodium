@@ -10,7 +10,7 @@ Summary:	Wrapper for the Sodium cryptographic library
 Summary(pl.UTF-8):	Interfejs do biblioteki kryptograficznej Sodium
 Name:		%{php_name}-pecl-%{modname}
 Version:	1.0.7
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
